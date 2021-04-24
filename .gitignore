@@ -11,6 +11,3 @@ npm-debug.log
 Dockerfile
 docker-compose.yml
 
-# uploads
-uploads/profile
-uploads/attachment
