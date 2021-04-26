@@ -1,7 +1,6 @@
 /**
  * Database setting with different environtment
  */
-const path = require('path');
 module.exports = {
   development: {
     client: 'pg',
@@ -12,10 +11,10 @@ module.exports = {
       database: 'sales_app'
     },
     migrations: {
-      directory: path.resolve(path.dirname(require.main.filename), 'database/migrations'),
+      directory: './database/migrations',
     },
     seeds: {
-      directory: path.resolve(path.dirname(require.main.filename), 'database/migrations'),
+      directory: './database/seeds',
     }
   },
 
@@ -28,10 +27,10 @@ module.exports = {
       database: 'sales_app'
     },
     migrations: {
-      directory: path.resolve(path.dirname(require.main.filename), 'database/migrations'),
+      directory: './database/migrations',
     },
     seeds: {
-      directory: path.resolve(path.dirname(require.main.filename), 'database/migrations'),
+      directory: './database/seeds',
     }
   },
 
@@ -44,10 +43,10 @@ module.exports = {
       database: 'sales_app'
     },
     migrations: {
-      directory: path.resolve(path.dirname(require.main.filename), 'database/migrations'),
+      directory: './database/migrations',
     },
     seeds: {
-      directory: path.resolve(path.dirname(require.main.filename), 'database/migrations'),
+      directory: './database/seeds',
     }
   }
 

@@ -33,3 +33,27 @@ module.exports.joinSales = async (condition) => {
     throw new AppError(AppError.DATABASE_ERROR, 500, true);
   }
 }
+
+/**
+ * Sample transaction for multiple query in one time
+ */
+module.exports.sampleTransaction = async (data) => {
+  try {
+    return await knex.transaction(async (trx) => {
+      let insertId = await trx('users')
+        .returning('id')
+        .insert(data);
+
+      await trx('users')
+        .returning('id')
+        .update({ username: 'updated' })
+        .where({ id: insertId[0] });
+
+      return insertId
+    })
+
+  } catch (err) {
+    console.log(err)
+    throw new AppError(AppError.DATABASE_ERROR, 500, true);
+  }
+}

@@ -97,8 +97,8 @@ module.exports.getUserSale = async (req, res, next) => {
         value.attachment = `${apiV1View}${value.attachment}`
       }
     })
-    let returnData = { row }
-    res.send({ message: 'Get user sales successfully', data: returnData });
+    
+    res.send({ message: 'Get user sales successfully', data: row });
   } catch (err) {
     if (err instanceof AppError) {
       return next(err);

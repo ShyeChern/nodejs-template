@@ -3,20 +3,6 @@ const saleValidator = require('./saleValidator');
 const { fileStorage, attachmentFilter } = require('../../util/uploads');
 var multer = require('multer')
 
-
-module.exports.uploads = async (req, res) => {
-  var storage = fileStorage('image');
-  var fileFilter = imageFilter;
-  var upload = multer({ storage: storage, fileFilter, limits: { fileSize: 5000000 } })
-  var cpUpload = upload.fields([{ name: 'image', maxCount: 2 }, { name: 'file', maxCount: 8 }])
-  cpUpload(req, res, (err) => {
-    if (err) {
-      return res.send({ result: false, message: err.message });
-    }
-    res.end();
-  })
-}
-
 module.exports.getSale = async (req, res, next) => {
   try {
     let { page, packageName } = req.query;
@@ -137,7 +123,7 @@ module.exports.deleteSale = async (req, res, next) => {
     let userInput = {
       id: req.params.id
     }
-    
+
     await saleValidator.validateDeleteSale(userInput);
 
     await salesModel.delete({ id: userInput.id });
