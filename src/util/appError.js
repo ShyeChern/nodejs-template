@@ -8,6 +8,13 @@ const ErrorMessage = {
   100004: 'Password does not matched.',
   100005: 'Invalid image. Only jpg, png, gif image with maximum 2 MB size are allowed.',
   100006: 'Username exist.',
+  100007: 'The requested file does not exist.',
+  100008: 'Invalid user id.',
+  100009: 'Only Red, Yellow, Blue package are available.',
+  100010: 'Invalid package quantity.',
+  100011: 'Invalid date format.',
+  100012: 'Invalid attachment. Only pdf file with maximum 5 MB are allowed',
+  100013: 'Invalid sale id.',
   900001: 'Internal server error, please try again later. If this error persist please contact our support.',
 }
 
@@ -23,7 +30,6 @@ class AppError extends Error {
    */
   constructor(errorCode, statusCode = 400, showErrorCode = false) {
     super(ErrorMessage[errorCode])
-
     // assign the error class name in your custom error
     this.name = this.constructor.name
     // capturing the stack trace keeps the reference to your error sclass
@@ -43,6 +49,13 @@ AppError.INVALID_PASSWORD = 100003;
 AppError.PASSWORD_NOT_MATCH = 100004;
 AppError.INVALID_IMAGE = 100005;
 AppError.USERNAME_EXIST = 100006;
+AppError.FILE_NOT_EXIST = 100007;
+AppError.INVALID_USER_ID = 100008;
+AppError.INVALID_PACKAGE_NAME = 100009;
+AppError.INVALID_PACKAGE_QUANTITY = 100010;
+AppError.INVALID_DATE_FORMAT = 100011;
+AppError.INVALID_ATTACHMENT = 100012;
+AppError.INVALID_SALE_ID = 100013;
 AppError.DATABASE_ERROR = 900001;
 
 global.AppError = module.exports = AppError;

@@ -1,11 +1,10 @@
 'use strict';
-const { verifyToken } = require('./middleware/verifyToken');
 const apiV1 = require('./v1/index');
 // const apiV2 = require('./v2/index');
 
 module.exports.setRoutes = (app) => {
-  // api route with middleware, all the api will start with /api/v1/xx
-  app.use('/api/v1', verifyToken, apiV1);
+  // api route, all the api will start with /api/v1/xx
+  app.use('/api/v1', apiV1);
 
   // send 404 error if other path
   app.use('/*', (req, res) => {

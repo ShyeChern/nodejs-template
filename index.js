@@ -2,6 +2,7 @@
 
 require('dotenv').config();
 require('./src/util/appError');
+require('./config/constants');
 const express = require('express');
 const cors = require('cors');
 const https = require('https');
