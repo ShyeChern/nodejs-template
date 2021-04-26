@@ -3,6 +3,7 @@ const userValidator = require('./userValidator');
 const { signToken } = require('../../util/jwt');
 const { encrypt, decrypt } = require('../../util/password');
 const { fileStorage, imageFilter } = require('../../util/uploads');
+const { sendWelcomeMail } = require('../../util/email');
 const multer = require('multer')
 
 module.exports.login = async (req, res, next) => {
@@ -45,11 +46,12 @@ module.exports.add = async (req, res, next) => {
 
   uploads(req, res, async (err) => {
     try {
-      userValidator.validateAddUser(req.body);
+      await userValidator.validateAddUser(req.body);
+
       if (err) {
         throw new AppError(AppError.INVALID_IMAGE);
       }
-      let { username, password } = req.body;
+      let { email, username, password } = req.body;
 
       // not put/extend in validator to ensure validator resusability (for update etc...)
       let user = await userModel.selectOne({ username });
@@ -64,12 +66,15 @@ module.exports.add = async (req, res, next) => {
 
       password = await encrypt(password);
       let insertId = await userModel.insert({
+        email,
         username,
         password,
         profile_image: profileImage
       });
 
       // do something with the insert id
+      
+      sendWelcomeMail(email, { username });
 
       res.send({ message: 'Add user successfully' });
 
@@ -97,7 +102,7 @@ module.exports.getUserSale = async (req, res, next) => {
         value.attachment = `${apiV1View}${value.attachment}`
       }
     })
-    
+
     res.send({ message: 'Get user sales successfully', data: row });
   } catch (err) {
     if (err instanceof AppError) {

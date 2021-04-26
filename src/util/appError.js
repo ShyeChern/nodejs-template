@@ -15,6 +15,8 @@ const ErrorMessage = {
   100011: 'Invalid date format.',
   100012: 'Invalid attachment. Only pdf file with maximum 5 MB are allowed',
   100013: 'Invalid sale id.',
+  100014: 'Invalid email address.',
+  100015: 'Email exist.',
   900001: 'Internal server error, please try again later. If this error persist please contact our support.',
 }
 
@@ -56,6 +58,8 @@ AppError.INVALID_PACKAGE_QUANTITY = 100010;
 AppError.INVALID_DATE_FORMAT = 100011;
 AppError.INVALID_ATTACHMENT = 100012;
 AppError.INVALID_SALE_ID = 100013;
+AppError.INVALID_EMAIL = 100014;
+AppError.EMAIL_USED = 100015;
 AppError.DATABASE_ERROR = 900001;
 
 global.AppError = module.exports = AppError;

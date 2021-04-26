@@ -23,8 +23,6 @@ router.route('/sales').get(verifyToken, salesController.getSale)
 router.route('/sales/:id').put(verifyToken, salesController.updateSale)
   .delete(verifyToken, salesController.deleteSale);
 
-router.route('/uploads').post(salesController.uploads);
-
 // Uploads route
 router.route('/view/:folder/:file').get(uploadController.viewFile);
 router.route('/download/:folder/:file').get(uploadController.downloadFile);

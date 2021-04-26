@@ -1,4 +1,16 @@
 const Joi = require('joi');
+const userModel = require('./userModel');
+
+const email = Joi.string()
+  .email()
+  .required()
+  .external(async (value) => {
+    let user = await userModel.selectOne({ email: value });
+    if (user) {
+      throw new AppError(AppError.EMAIL_USED);
+    }
+  })
+  .error(() => { throw new AppError(AppError.INVALID_EMAIL) });
 
 const username = Joi.string()
   .alphanum()
@@ -15,13 +27,14 @@ const password = Joi.string()
 module.exports.validateAddUser = (input) => {
   try {
     const schema = Joi.object({
+      email,
       username,
       password,
       confirmPassword: Joi.any().valid(Joi.ref('password'))
         .error(() => { throw new AppError(AppError.PASSWORD_NOT_MATCH) })
     });
 
-    return schema.validate(input);
+    return schema.validateAsync(input);
 
   } catch (err) {
     if (err instanceof AppError) {
