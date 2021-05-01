@@ -22,12 +22,12 @@ Auto increment/Sequences no update if seeding, need to manually update it (teste
 [Stackoverflow Reference](https://stackoverflow.com/questions/8745051/postgres-manually-alter-sequence)
 
 ## Postman Testing
-All the testing is done via Postman 
-Postman collection link: [`https://www.getpostman.com/collections/7d7462236b04b6ad9b45`](https://www.getpostman.com/collections/7d7462236b04b6ad9b45)
+All the testing is done via Postman \
+Postman collection link: [`https://www.getpostman.com/collections/7d7462236b04b6ad9b45`](https://www.getpostman.com/collections/7d7462236b04b6ad9b45) \
 Postman environment variable
-1. localhost: `http://localhost:5000/api/`
-2. api_version: `v1/`
-3. token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYxOTI1MjU0M30.uqqRy06zb2DYimhsqpf8UsJneoyRhhSmPZzthvU2P2I`
+- localhost: `http://localhost:5000/api/`
+- api_version: `v1/`
+- token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYxOTI1MjU0M30.uqqRy06zb2DYimhsqpf8UsJneoyRhhSmPZzthvU2P2I`
 
 ## Generate Self Signed SSL Certificate
 1. Open your git bash and follow this link [`https://flaviocopes.com/express-https-self-signed-certificate/`](https://flaviocopes.com/express-https-self-signed-certificate/)
