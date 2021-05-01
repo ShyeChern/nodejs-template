@@ -26,7 +26,7 @@ if (process.env.NODE_ENV == 'production') {
     key: fs.readFileSync(process.env.SSL_KEY),
     cert: fs.readFileSync(process.env.SSL_CERT)
   };
-
+  
   https.createServer(options, app).listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
   })

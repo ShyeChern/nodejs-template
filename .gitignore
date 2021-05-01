@@ -11,3 +11,7 @@ npm-debug.log
 Dockerfile
 docker-compose.yml
 
+# SSL
+server.cert
+server.key
+

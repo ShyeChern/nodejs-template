@@ -8,9 +8,9 @@
 ### Change
 * **change:** Change database setting
 ### Feature
-* **feat(user):** Added user module
-* **feat(sale):** Added sale module
+* **feat(user):** Add user module
+* **feat(sale):** Add sale module
 
 ## v1.0.0 (2021-04-21)
 ### Configuration
-* **conf:** Added database config for development, staging, and production
+* **conf:** Add database config for development, staging, and production

@@ -9,23 +9,33 @@ This is the sample node.js file structure template for myself.
 - Multer
 - Nodemailer
 
-some brief
-api best practice include multiple table thingy with join
-api documented in version
-put api link in online?
-
-## Database 
-1. Install knex using **__npm install knex__** in your computer
-2. Run npx knex migrate:latest (Windows), knex migrate:latest (Mac)
+## Installation
+1. Clone this repo
+2. Run npm install
+3. Change your .env variable
+4. Setup Database by running npx knex migrate:latest (Windows), knex migrate:latest (Mac)
 3. Run npx knex seed:run (Windows), knex seed:run (Mac)
+3. Run npm start ***(nodemon index.js / node index.js)***
 
-**Note** 
-Auto increment/Sequences no update if seeding, need to manually update it(tested in postgres)
+***Note*** \
+Auto increment/Sequences no update if seeding, need to manually update it (tested in postgres) 
 [Stackoverflow Reference](https://stackoverflow.com/questions/8745051/postgres-manually-alter-sequence)
+
+## Postman Testing
+All the testing is done via Postman 
+Postman public link: `https://www.getpostman.com/collections/7d7462236b04b6ad9b45`
+Postman environment variable
+1. localhost: `http://localhost:5000/api/`
+2. api_version: `v1/`
+3. token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYxOTI1MjU0M30.uqqRy06zb2DYimhsqpf8UsJneoyRhhSmPZzthvU2P2I`
+
+## Generate Self Signed SSL Certificate
+1. Open your git bash and follow this link `https://flaviocopes.com/express-https-self-signed-certificate/`
 
 ## Todo
 - `encrypt and decrypt for id`
-- `renew token`
+- `Refresh token and renew token`
 - `reuse for general model (insert, update, delete, select...)`
+- `unit testing`
 
 Feel free to contact me at chern-97@hotmail.com
