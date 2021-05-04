@@ -17,7 +17,7 @@ module.exports.getSale = async (req, res, next) => {
     if (packageName) {
       condition.package_name = packageName;
     }
-    
+
     let row = await salesModel.selectLimitOffset(condition, limit, offset);
     let totalRow = (await salesModel.count(condition)).total;
     row.forEach(value => {

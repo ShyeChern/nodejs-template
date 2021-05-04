@@ -24,7 +24,7 @@ Auto increment/Sequences no update if seeding, need to manually update it (teste
 ## Postman Testing
 All the testing is done via Postman \
 Postman collection link: [`https://www.getpostman.com/collections/7d7462236b04b6ad9b45`](https://www.getpostman.com/collections/7d7462236b04b6ad9b45) \
-Postman environment variable
+Postman environment variable:
 - localhost: `http://localhost:5000/api/`
 - api_version: `v1/`
 - token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYxOTI1MjU0M30.uqqRy06zb2DYimhsqpf8UsJneoyRhhSmPZzthvU2P2I`
@@ -37,5 +37,6 @@ Postman environment variable
 - `Refresh token and renew token`
 - `reuse for general model (insert, update, delete, select...)`
 - `unit testing`
+- `set cookie / passport`
 
 Feel free to contact me at chern-97@hotmail.com

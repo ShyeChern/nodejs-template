@@ -8,6 +8,8 @@ module.exports.setRoutes = (app) => {
 
   // send 404 error if other path
   app.use('/*', (req, res) => {
+    // Can use redirect to redirect somewhere
+    // res.redirect('http://localhost:3000/')
     res.status(404).send(`${req.method} ${req.originalUrl} endpoint not found`);
   });
 

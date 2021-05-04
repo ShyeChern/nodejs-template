@@ -46,6 +46,16 @@ module.exports.insert = async (data) => {
   }
 }
 
+module.exports.update = async (data, condition) => {
+  try {
+    return await knex('sales')
+      .update(data)
+      .where(condition);
+  } catch (err) {
+    throw new AppError(AppError.DATABASE_ERROR, 500, true);
+  }
+}
+
 module.exports.delete = async (condition) => {
   try {
     return await knex('sales')
