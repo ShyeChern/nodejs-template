@@ -8,7 +8,7 @@ module.exports.selectOne = async (condition) => {
       .where(condition)
       .first();
   } catch (err) {
-    throw new AppError(AppError.DATABASE_ERROR, 500, true);
+    throw new Error(err)
   }
 }
 
@@ -19,7 +19,7 @@ module.exports.count = async (condition) => {
       .where(condition)
       .first();
   } catch (err) {
-    throw new AppError(AppError.DATABASE_ERROR, 500, true);
+    throw new Error(err)
   }
 }
 
@@ -31,8 +31,7 @@ module.exports.selectLimitOffset = async (condition, limit, offset) => {
       .limit(limit)
       .offset(offset);
   } catch (err) {
-    console.log(err)
-    throw new AppError(AppError.DATABASE_ERROR, 500, true);
+    throw new Error(err)
   }
 }
 
@@ -42,7 +41,7 @@ module.exports.insert = async (data) => {
       .returning('id')
       .insert(data);
   } catch (err) {
-    throw new AppError(AppError.DATABASE_ERROR, 500, true);
+    throw new Error(err)
   }
 }
 
@@ -52,7 +51,7 @@ module.exports.update = async (data, condition) => {
       .update(data)
       .where(condition);
   } catch (err) {
-    throw new AppError(AppError.DATABASE_ERROR, 500, true);
+    throw new Error(err)
   }
 }
 
@@ -62,6 +61,6 @@ module.exports.delete = async (condition) => {
       .delete()
       .where(condition);
   } catch (err) {
-    throw new AppError(AppError.DATABASE_ERROR, 500, true);
+    throw new Error(err)
   }
 }

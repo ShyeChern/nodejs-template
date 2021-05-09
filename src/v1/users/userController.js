@@ -12,13 +12,13 @@ module.exports.login = async (req, res, next) => {
     let user = await userModel.selectOne({ username });
 
     if (!user) {
-      throw new AppError(AppError.INVALID_CREDENTIALS, 401);
+      throw new UserError(UserError.INVALID_CREDENTIALS, 401);
     }
 
     let passwordMatch = await decrypt(password, user.password);
 
     if (!passwordMatch) {
-      throw new AppError(AppError.INVALID_CREDENTIALS, 401);
+      throw new UserError(UserError.INVALID_CREDENTIALS, 401);
     }
 
     delete user.password;
@@ -27,11 +27,7 @@ module.exports.login = async (req, res, next) => {
     res.send({ message: 'Login successfully', data: user });
 
   } catch (err) {
-    if (err instanceof AppError) {
-      return next(err);
-    } else {
-      return next(new AppError(AppError.INTERNAL_SERVER_ERROR, 500, true));
-    }
+    return next(err)
   }
 }
 
@@ -49,14 +45,14 @@ module.exports.add = async (req, res, next) => {
       await userValidator.validateAddUser(req.body);
 
       if (err) {
-        throw new AppError(AppError.INVALID_IMAGE);
+        throw new UserError(UserError.INVALID_IMAGE);
       }
       let { email, username, password } = req.body;
 
       // not put/extend in validator to ensure validator resusability (for update etc...)
       let user = await userModel.selectOne({ username });
       if (user) {
-        throw new AppError(AppError.USERNAME_EXIST);
+        throw new UserError(UserError.USERNAME_EXIST);
       }
 
       let profileImage = null;
@@ -73,17 +69,13 @@ module.exports.add = async (req, res, next) => {
       });
 
       // do something with the insert id
-      
+
       sendWelcomeMail(email, { username });
 
       res.send({ message: 'Add user successfully' });
 
     } catch (err) {
-      if (err instanceof AppError) {
-        return next(err);
-      } else {
-        return next(new AppError(AppError.INTERNAL_SERVER_ERROR, 500, true));
-      }
+      return next(err)
     }
   })
 }
@@ -97,18 +89,15 @@ module.exports.getUserSale = async (req, res, next) => {
     }
 
     let row = await userModel.joinSales(condition);
-    row.forEach(value => {
+
+    for (let value of row) {
       if (value.attachment !== null) {
         value.attachment = `${apiV1View}${value.attachment}`
       }
-    })
+    }
 
     res.send({ message: 'Get user sales successfully', data: row });
   } catch (err) {
-    if (err instanceof AppError) {
-      return next(err);
-    } else {
-      return next(new AppError(AppError.INTERNAL_SERVER_ERROR, 500, true));
-    }
+    return next(err)
   }
 }

@@ -20,19 +20,17 @@ module.exports.getSale = async (req, res, next) => {
 
     let row = await salesModel.selectLimitOffset(condition, limit, offset);
     let totalRow = (await salesModel.count(condition)).total;
-    row.forEach(value => {
+
+    for (let value of row) {
       if (value.attachment !== null) {
         value.attachment = `${apiV1View}${value.attachment}`
       }
-    })
+    }
+
     let returnData = { row, totalRow, totalPage: Math.ceil(totalRow / 10) }
     res.send({ message: 'Get sales data successfully', data: returnData });
   } catch (err) {
-    if (err instanceof AppError) {
-      return next(err);
-    } else {
-      return next(new AppError(AppError.INTERNAL_SERVER_ERROR, 500, true));
-    }
+    return next(err)
   }
 }
 
@@ -45,7 +43,7 @@ module.exports.addSale = async (req, res, next) => {
     try {
       await saleValidator.validateAddSale(req.body);
       if (err) {
-        throw new AppError(AppError.INVALID_ATTACHMENT);
+        throw new UserError(UserError.INVALID_ATTACHMENT);
       }
 
       let attachment = null;
@@ -66,11 +64,7 @@ module.exports.addSale = async (req, res, next) => {
       res.send({ message: 'Add sale successfully' });
 
     } catch (err) {
-      if (err instanceof AppError) {
-        return next(err);
-      } else {
-        return next(new AppError(AppError.INTERNAL_SERVER_ERROR, 500, true));
-      }
+      return next(err)
     }
   })
 }
@@ -91,7 +85,7 @@ module.exports.updateSale = async (req, res, next) => {
       }
       await saleValidator.validateUpdateSale(userInput);
       if (err) {
-        throw new AppError(AppError.INVALID_ATTACHMENT);
+        throw new UserError(UserError.INVALID_ATTACHMENT);
       }
 
       let updateData = {
@@ -109,11 +103,7 @@ module.exports.updateSale = async (req, res, next) => {
       res.send({ message: 'Update sale successfully' });
 
     } catch (err) {
-      if (err instanceof AppError) {
-        return next(err);
-      } else {
-        return next(new AppError(AppError.INTERNAL_SERVER_ERROR, 500, true));
-      }
+      return next(err)
     }
   })
 }
@@ -130,10 +120,6 @@ module.exports.deleteSale = async (req, res, next) => {
 
     res.send({ message: 'Delete sale successfully' });
   } catch (err) {
-    if (err instanceof AppError) {
-      return next(err);
-    } else {
-      return next(new AppError(AppError.INTERNAL_SERVER_ERROR, 500, true));
-    }
+    return next(err)
   }
 }

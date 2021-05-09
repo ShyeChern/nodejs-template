@@ -8,6 +8,7 @@ This is the sample node.js file structure template for myself.
 - Knex
 - Multer
 - Nodemailer
+- Winstone
 
 ## Installation
 1. Clone this repo
@@ -35,7 +36,7 @@ Postman environment variable:
 ## Todo
 - `encrypt and decrypt for id`
 - `Refresh token and renew token`
-- `reuse for general model (insert, update, delete, select...)`
+- `reuse for general model (insert, update, delete, select...) util model?` using class component?
 - `unit testing`
 - `set cookie / passport`
 

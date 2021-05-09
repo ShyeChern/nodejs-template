@@ -16,21 +16,19 @@ const ErrorMessage = {
   100012: 'Invalid attachment. Only pdf file with maximum 5 MB are allowed',
   100013: 'Invalid sale id.',
   100014: 'Invalid email address.',
-  100015: 'Email exist.',
-  900001: 'Internal server error, please try again later. If this error persist please contact our support.',
+  100015: 'Email exist.'
 }
 
 /**
- * Custom error
+ * Custom User error
  */
-class AppError extends Error {
+class UserError extends Error {
   /**
    * Construct error with own message, error code and status code
    * @param {int} errorCode own reference error code
    * @param {int} statusCode http status code
-   * @param {boolean} showErrorCode whether to show error code for reference
    */
-  constructor(errorCode, statusCode = 400, showErrorCode = false) {
+  constructor(errorCode, statusCode = 400) {
     super(ErrorMessage[errorCode])
     // assign the error class name in your custom error
     this.name = this.constructor.name
@@ -39,27 +37,25 @@ class AppError extends Error {
 
     this.errorCode = errorCode;
     this.statusCode = statusCode;
-    this.showErrorCode = showErrorCode;
   }
 }
 
-AppError.UNAUTHORIZED = 401;
-AppError.INTERNAL_SERVER_ERROR = 500;
-AppError.INVALID_CREDENTIALS = 100001;
-AppError.INVALID_USERNAME = 100002;
-AppError.INVALID_PASSWORD = 100003;
-AppError.PASSWORD_NOT_MATCH = 100004;
-AppError.INVALID_IMAGE = 100005;
-AppError.USERNAME_EXIST = 100006;
-AppError.FILE_NOT_EXIST = 100007;
-AppError.INVALID_USER_ID = 100008;
-AppError.INVALID_PACKAGE_NAME = 100009;
-AppError.INVALID_PACKAGE_QUANTITY = 100010;
-AppError.INVALID_DATE_FORMAT = 100011;
-AppError.INVALID_ATTACHMENT = 100012;
-AppError.INVALID_SALE_ID = 100013;
-AppError.INVALID_EMAIL = 100014;
-AppError.EMAIL_USED = 100015;
-AppError.DATABASE_ERROR = 900001;
+UserError.UNAUTHORIZED = 401;
+UserError.INVALID_CREDENTIALS = 100001;
+UserError.INVALID_USERNAME = 100002;
+UserError.INVALID_PASSWORD = 100003;
+UserError.PASSWORD_NOT_MATCH = 100004;
+UserError.INVALID_IMAGE = 100005;
+UserError.USERNAME_EXIST = 100006;
+UserError.FILE_NOT_EXIST = 100007;
+UserError.INVALID_USER_ID = 100008;
+UserError.INVALID_PACKAGE_NAME = 100009;
+UserError.INVALID_PACKAGE_QUANTITY = 100010;
+UserError.INVALID_DATE_FORMAT = 100011;
+UserError.INVALID_ATTACHMENT = 100012;
+UserError.INVALID_SALE_ID = 100013;
+UserError.INVALID_EMAIL = 100014;
+UserError.EMAIL_USED = 100015;
 
-global.AppError = module.exports = AppError;
+global.UserError = module.exports = UserError;
+global.ErrorMessage = module.exports = ErrorMessage;

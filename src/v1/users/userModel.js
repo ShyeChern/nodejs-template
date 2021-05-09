@@ -8,7 +8,7 @@ module.exports.selectOne = async (condition) => {
       .where(condition)
       .first();
   } catch (err) {
-    throw new AppError(AppError.DATABASE_ERROR, 500, true);
+    throw new Error(err)
   }
 }
 
@@ -18,7 +18,7 @@ module.exports.insert = async (data) => {
       .returning('id')
       .insert(data);
   } catch (err) {
-    throw new AppError(AppError.DATABASE_ERROR, 500, true);
+    throw new Error(err)
   }
 }
 
@@ -29,8 +29,7 @@ module.exports.joinSales = async (condition) => {
       .innerJoin('sales', 'users.id', 'sales.user_id')
       .where(condition);
   } catch (err) {
-    console.log(err)
-    throw new AppError(AppError.DATABASE_ERROR, 500, true);
+    throw new Error(err)
   }
 }
 
@@ -53,7 +52,6 @@ module.exports.sampleTransaction = async (data) => {
     })
 
   } catch (err) {
-    console.log(err)
-    throw new AppError(AppError.DATABASE_ERROR, 500, true);
+    throw new Error(err)
   }
 }
