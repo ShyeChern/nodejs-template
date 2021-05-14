@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const userModel = require('./userModel');
+const userModel = require('./user.model');
 
 const email = Joi.string()
   .email()

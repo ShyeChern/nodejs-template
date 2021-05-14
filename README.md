@@ -38,6 +38,6 @@ Postman environment variable:
 - `Refresh token and renew token`
 - `reuse for general model (insert, update, delete, select...) util model?` using class component?
 - `unit testing`
-- `set cookie / passport`
+- `passport`
 
 Feel free to contact me at chern-97@hotmail.com

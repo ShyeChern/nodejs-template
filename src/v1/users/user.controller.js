@@ -1,5 +1,5 @@
-const userModel = require('./userModel');
-const userValidator = require('./userValidator');
+const userModel = require('./user.model');
+const userValidator = require('./user.validator');
 const { signToken } = require('../../util/jwt');
 const { encrypt, decrypt } = require('../../util/password');
 const { fileStorage, imageFilter } = require('../../util/uploads');

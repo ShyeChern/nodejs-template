@@ -1,6 +1,6 @@
 const Joi = require('joi').extend(require('@joi/date'));
-const userModel = require('../users/userModel');
-const saleModel = require('./saleModel');
+const userModel = require('../users/user.model');
+const saleModel = require('./sale.model');
 
 const id = Joi.number()
   .integer()

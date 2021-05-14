@@ -2,9 +2,9 @@
 const express = require('express');
 const router = express.Router();
 const { verifyToken } = require('../middleware/verifyToken');
-const userController = require('./users/userController');
-const salesController = require('./sales/saleController');
-const uploadController = require('./uploads/uploadController');
+const userController = require('./users/user.controller');
+const salesController = require('./sales/sale.controller');
+const uploadController = require('./uploads/upload.controller');
 
 /**
  * Defined route for every function with middleware
@@ -26,5 +26,16 @@ router.route('/sales/:id').put(verifyToken, salesController.updateSale)
 // Uploads route
 router.route('/view/:folder/:file').get(uploadController.viewFile);
 router.route('/download/:folder/:file').get(uploadController.downloadFile);
+
+/**
+ * Test cookie -- must be under same domain and port
+ * Signed cookie will return false if cookie is modified, undefined if not exist
+ * maxAge in milliseconds
+ */
+router.route('/test-cookie').get((req, res, next) => {
+  console.log(req.signedCookies.__cookie)
+  res.cookie('__cookie', 'value', { maxAge: 60000, httpOnly: true, secure: true, signed: true });
+  res.send('check cookie')
+});
 
 module.exports = router;

@@ -1,5 +1,5 @@
-const salesModel = require('./saleModel');
-const saleValidator = require('./saleValidator');
+const salesModel = require('./sale.model');
+const saleValidator = require('./sale.validator');
 const { fileStorage, attachmentFilter } = require('../../util/uploads');
 var multer = require('multer')
 

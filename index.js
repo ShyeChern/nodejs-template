@@ -7,15 +7,20 @@ const express = require('express');
 const cors = require('cors');
 const https = require('https');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
 const helmet = require('helmet');
 const fs = require('fs');
 const { setRoutes } = require('./src/routes');
 const PORT = process.env.PORT || 5000;
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+// deprecated
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser(process.env.COOKIE_SIGNAGURE))
 app.use(cors({
-  origin: true,
+  origin: true
 }));
 app.use(helmet());
 

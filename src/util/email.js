@@ -1,5 +1,11 @@
+/**
+ * Email function with nodemailer
+ * Consist of all the email with html template
+ * 
+ * Email sender can be set at constants.js
+ */
+
 const nodemailer = require("nodemailer");
-const path = require("path");
 
 module.exports.sendWelcomeMail = async (receiver, data) => {
   let design = `
