@@ -9,6 +9,7 @@ This is the sample node.js file structure template for myself.
 - Multer
 - Nodemailer
 - Winstone
+- Node Cron
 
 ## Installation
 1. Clone this repo
