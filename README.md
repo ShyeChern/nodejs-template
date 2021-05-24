@@ -37,7 +37,7 @@ Postman environment variable:
 ## Todo
 - `encrypt and decrypt for id`
 - `Refresh token and renew token`
-- `reuse for general model (insert, update, delete, select...) util model?` using class component?
+- `reuse for general model (insert, update, delete, select...) util model?` use class?
 - `unit testing`
 - `passport`
 

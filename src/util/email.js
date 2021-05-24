@@ -1,14 +1,28 @@
 /**
  * Email function with nodemailer
  * Consist of all the email with html template
- * 
+ *
  * Email sender can be set at constants.js
  */
 
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
+const { errorLog } = require('./log');
+
+const transporter = nodemailer.createTransport({
+	host: 'smtp.gmail.com',
+	port: 587,
+	secure: false, // true for 465, false for other ports
+	auth: {
+		user: process.env.SMTP_USER,
+		pass: process.env.SMTP_PASS,
+	},
+	tls: {
+		rejectUnauthorized: false, // do not fail on invalid or self signed cert
+	},
+});
 
 module.exports.sendWelcomeMail = async (receiver, data) => {
-  let design = `
+	let design = `
   <div
   style="max-width: 560px; padding: 20px; border-radius: 5px; margin: auto; font-size: 15px;background: #414242; font-family: Open Sans,Helvetica,Arial; ">
   <div style="text-align: center;">
@@ -33,43 +47,49 @@ module.exports.sendWelcomeMail = async (receiver, data) => {
       ${emailSender}
     </p>
   </div>
-</div>`
+</div>`;
 
-  // Add attachment to the email
-  let attachment = [{
-    filename: 'File_001.pdf',
-    path: `${rootPath}/assets/Sample_Attachment.pdf`
-  }]
+	// Add attachment to the email
+	let attachment = [
+		{
+			filename: 'File_001.pdf',
+			path: `${rootPath}/assets/Sample_Attachment.pdf`,
+		},
+	];
 
-  sendMail('Welcome to Node.js Template', receiver, design, attachment);
-
-}
+	return sendMail('Welcome to Node.js Template', receiver, design, attachment);
+};
 
 const sendMail = async (subject, receiver, content, attachment = []) => {
+	// logo
+	attachment.push({ path: `${rootPath}/assets/logo.png`, cid: 'logo' });
 
-  // logo
-  attachment.push({ path: `${rootPath}/assets/logo.png`, cid: 'logo' });
+	try {
+		const info = await transporter.sendMail({
+			from: 'Shye Chern <noreply@domain.com>',
+			to: receiver, // separate string by comma for multiple receiver (abc@domain.com, def@domain.ccom, ...)
+			subject: subject,
+			html: content,
+			attachments: attachment,
+		});
 
-  let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false, // true for 465, false for other ports
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-    tls: {
-      rejectUnauthorized: false // do not fail on invalid or self signed cert
+		// for debugging
+		// console.log(info)
+
+		/* Sample return result
+    {
+      accepted: [ 'chern-97@hotmail.com' ],
+      rejected: [],
+      envelopeTime: 1336,
+      messageTime: 4810,
+      messageSize: 599859,
+      response: '250 2.0.0 OK  1621857604 s6sm9951112pjr.29 - gsmtp',
+      envelope: { from: 'noreply@domain.com', to: [ 'chern-97@hotmail.com' ] },
+      messageId: '<ebbc072b-2a4b-1502-91c1-ab45aafd3b0a@domain.com>'
     }
-  });
-
-  let info = await transporter.sendMail({
-    from: 'Shye Chern <noreply@domain.com>',
-    to: receiver, // separate string by comma for multiple receiver (abc@domain.com, def@domain.ccom, ...)
-    subject: subject,
-    html: content,
-    attachments: attachment
-  });
-
-  // console.log(info) for debugging
-}
+    */
+	} catch (err) {
+		err.message += `\nFail to send ${subject} email to ${receiver}`;
+		errorLog(err);
+	}
+};

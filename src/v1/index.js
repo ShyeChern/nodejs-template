@@ -13,15 +13,21 @@ const uploadController = require('./uploads/upload.controller');
 // User route
 router.route('/users/login').post(userController.login);
 
-router.route('/users').post(userController.add)
+router.route('/users').post(userController.add);
 
-router.route('/users/:userId/sales').get(verifyToken, userController.getUserSale)
+router
+	.route('/users/:userId/sales')
+	.get(verifyToken, userController.getUserSale);
 
 // Sales route
-router.route('/sales').get(verifyToken, salesController.getSale)
-  .post(verifyToken, salesController.addSale);
-router.route('/sales/:id').put(verifyToken, salesController.updateSale)
-  .delete(verifyToken, salesController.deleteSale);
+router
+	.route('/sales')
+	.get(verifyToken, salesController.getSale)
+	.post(verifyToken, salesController.addSale);
+router
+	.route('/sales/:id')
+	.put(verifyToken, salesController.updateSale)
+	.delete(verifyToken, salesController.deleteSale);
 
 // Uploads route
 router.route('/view/:folder/:file').get(uploadController.viewFile);
@@ -33,9 +39,14 @@ router.route('/download/:folder/:file').get(uploadController.downloadFile);
  * maxAge in milliseconds
  */
 router.route('/test-cookie').get((req, res, next) => {
-  console.log(req.signedCookies.__cookie)
-  res.cookie('__cookie', 'value', { maxAge: 60000, httpOnly: true, secure: true, signed: true });
-  res.send('check cookie')
+	console.log(req.signedCookies.__cookie);
+	res.cookie('__cookie', 'value', {
+		maxAge: 60000,
+		httpOnly: true,
+		secure: true,
+		signed: true,
+	});
+	res.send('check cookie');
 });
 
 module.exports = router;

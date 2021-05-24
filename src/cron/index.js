@@ -9,30 +9,30 @@ const { infoLog } = require('../util/log');
  */
 
 const sampleCronOne = () => {
-  cron.schedule('*/30 * * * * *', async () => {
-    console.log('I run every 30 seconds');
-    try {
-      let row = await userModel.joinSales({});
-      infoLog('Execute sample cron one successfully')
-    } catch (err) {
-      infoLog('Fail to execute sample cron one')
-    }
-  });
-}
+	cron.schedule('*/30 * * * * *', async () => {
+		console.log('I run every 30 seconds');
+		try {
+			let row = await userModel.joinSales({});
+			infoLog('Execute sample cron one successfully');
+		} catch (err) {
+			infoLog('Fail to execute sample cron one');
+		}
+	});
+};
 
 const sampleCronTwo = () => {
-  cron.schedule('0 * * * *', async () => {
-    try {
-      console.log('I run every hour at 0 minute');
-      // do something
-      infoLog('Execute sample cron two successfully')
-    } catch (err) {
-      infoLog('Fail to execute sample cron two')
-    }
-  });
-}
+	cron.schedule('0 * * * *', async () => {
+		try {
+			console.log('I run every hour at 0 minute');
+			// do something
+			infoLog('Execute sample cron two successfully');
+		} catch (err) {
+			infoLog('Fail to execute sample cron two');
+		}
+	});
+};
 
 module.exports.cronJob = () => {
-  sampleCronOne();
-  sampleCronTwo();
-}
+	sampleCronOne();
+	sampleCronTwo();
+};

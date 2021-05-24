@@ -28,7 +28,9 @@
     "pg": "^8.6.0",
     "winston": "^3.3.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^7.27.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ShyeChern/nodejs-template.git"
