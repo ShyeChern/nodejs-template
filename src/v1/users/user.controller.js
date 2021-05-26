@@ -1,3 +1,5 @@
+const GeneralModel = require('../../util/generalModel');
+const userGeneralModel = new GeneralModel('users');
 const userModel = require('./user.model');
 const userValidator = require('./user.validator');
 const { signToken } = require('../../util/jwt');
@@ -9,7 +11,13 @@ const multer = require('multer');
 module.exports.login = async (req, res, next) => {
 	try {
 		const { username, password } = req.body;
-		let user = await userModel.selectOne({ username });
+		let user = await userGeneralModel.selectOne({ username }, [
+			'id',
+			'email',
+			'username',
+			'password',
+			'profile_image as profileImage',
+		]);
 
 		if (!user) {
 			throw new UserError(UserError.INVALID_CREDENTIALS, 401);
@@ -52,19 +60,14 @@ module.exports.add = async (req, res, next) => {
 			}
 			let { email, username, password } = req.body;
 
-			// not put/extend in validator to ensure validator resusability (for update etc...)
-			let user = await userModel.selectOne({ username });
-			if (user) {
-				throw new UserError(UserError.USERNAME_EXIST);
-			}
-
 			let profileImage = null;
 			if (req.files.profileImage) {
 				profileImage = `profile/${req.files.profileImage[0].filename}`;
 			}
 
 			password = await encrypt(password);
-			let insertId = await userModel.insert({
+
+			let insertId = await userGeneralModel.insert({
 				email,
 				username,
 				password,
@@ -85,7 +88,7 @@ module.exports.add = async (req, res, next) => {
 
 module.exports.getUserSale = async (req, res, next) => {
 	try {
-		let condition = { user_id: req.params.userId };
+		let condition = { 's.user_id': req.params.userId };
 
 		if (req.query.packageName) {
 			condition.package_name = req.query.packageName;

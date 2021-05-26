@@ -1,4 +1,3 @@
-'use strict';
 const apiV1 = require('./v1/index');
 // const apiV2 = require('./v2/index');
 const { errorLog } = require('./util/log');

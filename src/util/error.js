@@ -7,8 +7,7 @@ const ErrorMessage = {
 		'Password must have minimum eight and maximum 20 characters, at least one uppercase letter,' +
 		' one lowercase letter, one number and one special character.',
 	100004: 'Password does not matched.',
-	100005:
-		'Invalid image. Only jpg, png, gif image with maximum 2 MB size are allowed.',
+	100005: 'Invalid image. Only jpg, png, gif image with maximum 2 MB size are allowed.',
 	100006: 'Username exist.',
 	100007: 'The requested file does not exist.',
 	100008: 'Invalid user id.',

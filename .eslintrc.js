@@ -6,6 +6,7 @@ module.exports = {
 	},
 	globals: {
 		UserError: 'readonly',
+		ErrorMessage: 'readonly',
 		baseUrl: 'readonly',
 		apiV1View: 'readonly',
 		apiV1Download: 'readonly',

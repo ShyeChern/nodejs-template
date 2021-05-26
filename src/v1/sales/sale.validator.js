@@ -1,13 +1,14 @@
 const Joi = require('joi').extend(require('@joi/date'));
-const userModel = require('../users/user.model');
-const saleModel = require('./sale.model');
+const GeneralModel = require('../../util/generalModel');
+const saleGeneralModel = new GeneralModel('sales');
+const userGeneralModel = new GeneralModel('users');
 
 const id = Joi.number()
 	.integer()
 	.required()
 	.external(async (value) => {
-		let sale = await saleModel.selectOne({ id: value });
-		if (!sale) {
+		let saleCount = (await saleGeneralModel.count({ id: value }, 'id')).count;
+		if (saleCount === '0') {
 			throw new UserError(UserError.INVALID_SALE_ID);
 		}
 	})
@@ -19,8 +20,8 @@ const userId = Joi.number()
 	.integer()
 	.required()
 	.external(async (value) => {
-		let user = await userModel.selectOne({ id: value });
-		if (!user) {
+		let userCount = (await userGeneralModel.count({ id: value }, 'id')).count;
+		if (userCount === '0') {
 			throw new UserError(UserError.INVALID_USER_ID);
 		}
 	})
@@ -51,44 +52,19 @@ const saleDate = Joi.date()
 	});
 
 module.exports.validateAddSale = (input) => {
-	try {
-		const schema = Joi.object({
-			userId,
-			packageName,
-			quantity,
-			saleDate,
-		});
+	const schema = Joi.object({ userId, packageName, quantity, saleDate });
 
-		return schema.validateAsync(input);
-	} catch (err) {
-		return err;
-	}
+	return schema.validateAsync(input);
 };
 
 module.exports.validateUpdateSale = (input) => {
-	try {
-		const schema = Joi.object({
-			id,
-			userId,
-			packageName,
-			quantity,
-			saleDate,
-		});
+	const schema = Joi.object({ id, userId, packageName, quantity, saleDate });
 
-		return schema.validateAsync(input);
-	} catch (err) {
-		return err;
-	}
+	return schema.validateAsync(input);
 };
 
 module.exports.validateDeleteSale = (input) => {
-	try {
-		const schema = Joi.object({
-			id,
-		});
+	const schema = Joi.object({ id });
 
-		return schema.validateAsync(input);
-	} catch (err) {
-		return err;
-	}
+	return schema.validateAsync(input);
 };

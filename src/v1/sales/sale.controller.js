@@ -1,3 +1,5 @@
+const GeneralModel = require('../../util/generalModel');
+const saleGeneralModel = new GeneralModel('sales');
 const salesModel = require('./sale.model');
 const saleValidator = require('./sale.validator');
 const { fileStorage, attachmentFilter } = require('../../util/uploads');
@@ -6,11 +8,10 @@ var multer = require('multer');
 module.exports.getSale = async (req, res, next) => {
 	try {
 		let { page, packageName } = req.query;
-
 		if (!page) {
 			page = 0;
 		}
-		const limit = 100;
+		const limit = 10;
 		const offset = Math.max(0, (page - 1) * 10);
 		let condition = {};
 
@@ -18,8 +19,16 @@ module.exports.getSale = async (req, res, next) => {
 			condition.package_name = packageName;
 		}
 
-		let row = await salesModel.selectLimitOffset(condition, limit, offset);
-		let totalRow = (await salesModel.count(condition)).total;
+		let row = await saleGeneralModel.selectLimitOffset(condition, limit, offset, [
+			'id',
+			'user_id as userId',
+			'package_name as packageName',
+			'quantity',
+			'sale_date as saleDate',
+			'attachment',
+		]);
+		// count id as total
+		let totalRow = (await saleGeneralModel.count(condition, { total: 'id' })).total;
 
 		for (let value of row) {
 			if (value.attachment !== null) {
@@ -55,7 +64,7 @@ module.exports.addSale = async (req, res, next) => {
 				attachment = `attachment/${req.files.attachment[0].filename}`;
 			}
 
-			let insertId = await salesModel.insert({
+			let insertId = await saleGeneralModel.insert({
 				user_id: req.body.userId,
 				package_name: req.body.packageName,
 				quantity: req.body.quantity,
@@ -105,7 +114,7 @@ module.exports.updateSale = async (req, res, next) => {
 				updateData.attachment = `attachment/${req.files.attachment[0].filename}`;
 			}
 
-			await salesModel.update(updateData, { id: userInput.id });
+			await saleGeneralModel.update(updateData, { id: userInput.id });
 
 			res.send({ message: 'Update sale successfully' });
 		} catch (err) {
@@ -122,7 +131,7 @@ module.exports.deleteSale = async (req, res, next) => {
 
 		await saleValidator.validateDeleteSale(userInput);
 
-		await salesModel.delete({ id: userInput.id });
+		await saleGeneralModel.delete({ id: userInput.id });
 
 		res.send({ message: 'Delete sale successfully' });
 	} catch (err) {

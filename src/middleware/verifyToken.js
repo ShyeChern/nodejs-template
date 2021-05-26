@@ -7,10 +7,7 @@ module.exports.verifyToken = (req, res, next) => {
 			throw new UserError(UserError.UNAUTHORIZED, 401);
 		}
 		try {
-			let decoded = jwt.verify(
-				req.get('authorization').split(' ')[1],
-				process.env.JWT_SECRET
-			);
+			let decoded = jwt.verify(req.get('authorization').split(' ')[1], process.env.JWT_SECRET);
 			req.jwt = { userId: decoded.userId };
 		} catch (err) {
 			infoLog(`IP: ${req.ip}, ${err.message} `);

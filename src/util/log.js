@@ -12,12 +12,7 @@ if (process.env.NODE_ENV !== 'production') {
 			timestamp(),
 			errors({ stack: true }),
 			align(),
-			printf(
-				(info) =>
-					`${info.timestamp} ${info.level} ${
-						info.stack ? info.stack : info.message
-					}`
-			)
+			printf((info) => `${info.timestamp} ${info.level} ${info.stack ? info.stack : info.message}`)
 		),
 		transports: [
 			/**
@@ -33,9 +28,7 @@ if (process.env.NODE_ENV !== 'production') {
 			timestamp(),
 			errors({ stack: true }),
 			align(),
-			printf(
-				(info) => `${info.timestamp} ${info.stack ? info.stack : info.message}`
-			)
+			printf((info) => `${info.timestamp} ${info.stack ? info.stack : info.message}`)
 		),
 		transports: [
 			/**
