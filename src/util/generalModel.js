@@ -3,7 +3,7 @@ const knex = require('../../database/database');
 /**
  * General and Reusable Model
  */
-class Model {
+module.exports = class Model {
 	constructor(table) {
 		this.table = table;
 	}
@@ -31,6 +31,4 @@ class Model {
 	count(condition, column = '*') {
 		return knex(this.table).count(column).where(condition).first();
 	}
-}
-
-module.exports = Model;
+};
