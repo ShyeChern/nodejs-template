@@ -1,16 +1,27 @@
-# SAMPLE CHANGELOG
+# CHANGELOG
+## v1.2.2 (2021-06-03)
+### Misc
+* Add crlf to lf
 
-## v1.1.1 (2021-04-23)
-### Bug Fix
-* **fix(sale):** Fix attachment upload for .pdf format
+## v1.2.1 (2021-05-26)
+### Misc
+* Add general model class and refactor model code
+* Add sample knex raw query
 
-## v1.1.0 (2021-04-22)
-### Change
-* **change:** Change database setting
+## v1.2.0 (2021-05-24)
 ### Feature
-* **feat(user):** Add user module
-* **feat(sale):** Add sale module
+* Add cron job
+* Add eslint and prettier
+### Misc
+* Remove unused code
 
-## v1.0.0 (2021-04-21)
-### Configuration
-* **conf:** Add database config for development, staging, and production
+## v1.1.0 (2021-05-09)
+### Feature
+* Add winstone logger
+* Add cookie sample
+### Misc
+* Update error class to match with winstone
+
+## v1.0.0 (2021-05-01)
+### Release
+* Initial release
