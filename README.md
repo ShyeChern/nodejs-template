@@ -1,6 +1,6 @@
 # Node.js Template
 
-This is the sample node.js file structure template for myself.
+This is the sample node.js file structure template for myself. It contains some code for me to refer when needed.
 
 ## Sample code including but not limited to the following package
 
