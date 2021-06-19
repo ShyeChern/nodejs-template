@@ -7,11 +7,12 @@ module.exports = {
 	globals: {
 		UserError: 'readonly',
 		ErrorMessage: 'readonly',
-		baseUrl: 'readonly',
-		apiV1View: 'readonly',
-		apiV1Download: 'readonly',
-		rootPath: 'readonly',
-		emailSender: 'readonly',
+		BASE_URL: 'readonly',
+		API_V1_VIEW: 'readonly',
+		API_V1_DOWNLOAD: 'readonly',
+		ROOT_PATH: 'readonly',
+		EMAIL_SENDER: 'readonly',
+		APP_COOKIE: 'readonly',
 	},
 	extends: 'eslint:recommended',
 	parserOptions: {

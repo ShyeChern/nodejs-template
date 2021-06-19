@@ -14,9 +14,7 @@ router.route('/users/login').post(userController.login);
 
 router.route('/users').post(userController.add);
 
-router
-	.route('/users/:userId/sales')
-	.get(verifyToken, userController.getUserSale);
+router.route('/users/:userId/sales').get(verifyToken, userController.getUserSale);
 
 // Sales route
 router
@@ -33,13 +31,13 @@ router.route('/view/:folder/:file').get(uploadController.viewFile);
 router.route('/download/:folder/:file').get(uploadController.downloadFile);
 
 /**
- * Test cookie -- must be under same domain and port
+ * Cookie Sample -- must be under same domain
  * Signed cookie will return false if cookie is modified, undefined if not exist
  * maxAge in milliseconds
  */
-router.route('/test-cookie').get((req, res, next) => {
-	console.log(req.signedCookies.__cookie);
-	res.cookie('__cookie', 'value', {
+router.route('/test-cookie').get((req, res) => {
+	console.log(req.signedCookies[APP_COOKIE]);
+	res.cookie(APP_COOKIE, 'value', {
 		maxAge: 60000,
 		httpOnly: true,
 		secure: true,

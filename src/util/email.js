@@ -44,7 +44,7 @@ module.exports.sendWelcomeMail = async (receiver, data) => {
     </p>
     <p style="padding: 10px 20px; text-align: left;">
       Best Regards,<br />
-      ${emailSender}
+      ${EMAIL_SENDER}
     </p>
   </div>
 </div>`;
@@ -53,7 +53,7 @@ module.exports.sendWelcomeMail = async (receiver, data) => {
 	let attachment = [
 		{
 			filename: 'File_001.pdf',
-			path: `${rootPath}/assets/Sample_Attachment.pdf`,
+			path: `${ROOT_PATH}/assets/Sample_Attachment.pdf`,
 		},
 	];
 
@@ -62,7 +62,7 @@ module.exports.sendWelcomeMail = async (receiver, data) => {
 
 const sendMail = async (subject, receiver, content, attachment = []) => {
 	// logo
-	attachment.push({ path: `${rootPath}/assets/logo.png`, cid: 'logo' });
+	attachment.push({ path: `${ROOT_PATH}/assets/logo.png`, cid: 'logo' });
 
 	try {
 		const info = await transporter.sendMail({

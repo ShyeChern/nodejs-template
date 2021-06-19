@@ -32,7 +32,7 @@ module.exports.getSale = async (req, res, next) => {
 
 		for (let value of row) {
 			if (value.attachment !== null) {
-				value.attachment = `${apiV1View}${value.attachment}`;
+				value.attachment = `${API_V1_VIEW}${value.attachment}`;
 			}
 		}
 

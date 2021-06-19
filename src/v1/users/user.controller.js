@@ -32,7 +32,15 @@ module.exports.login = async (req, res, next) => {
 		delete user.password;
 
 		user.token = signToken({ userId: user.id });
-		res.send({ message: 'Login successfully', data: user });
+
+		res
+			.cookie(APP_COOKIE, 'someValue', {
+				maxAge: 10000, // 10 seconds
+				httpOnly: true,
+				secure: true,
+				signed: true,
+			})
+			.send({ message: 'Login successfully', data: user });
 	} catch (err) {
 		return next(err);
 	}
@@ -98,7 +106,7 @@ module.exports.getUserSale = async (req, res, next) => {
 
 		for (let value of row) {
 			if (value.attachment !== null) {
-				value.attachment = `${apiV1View}${value.attachment}`;
+				value.attachment = `${API_V1_VIEW}${value.attachment}`;
 			}
 		}
 

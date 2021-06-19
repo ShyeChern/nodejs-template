@@ -48,6 +48,7 @@ Node.js best practice can found here[`https://github.com/goldbergyoni/nodebestpr
 
 - `encrypt and decrypt for id`
 - `Refresh token and renew token`
+- `put method with any object and verify according to it?`
 - `s3`
 - `unit testing`
 - `passport`
