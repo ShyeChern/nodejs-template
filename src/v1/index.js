@@ -26,7 +26,7 @@ router
 	.put(verifyToken, salesController.updateSale)
 	.delete(verifyToken, salesController.deleteSale);
 
-// Uploads route
+// Uploads route -- No authorization header
 router.route('/view/:folder/:file').get(uploadController.viewFile);
 router.route('/download/:folder/:file').get(uploadController.downloadFile);
 

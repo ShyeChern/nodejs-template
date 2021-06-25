@@ -42,15 +42,22 @@ Postman environment variable:
 
 ## Node.js Best Practice
 
-Node.js best practice can found here[`https://github.com/goldbergyoni/nodebestpractices#readme`](https://github.com/goldbergyoni/nodebestpractices#readme)
+Node.js best practice can found here [`https://github.com/goldbergyoni/nodebestpractices#readme`](https://github.com/goldbergyoni/nodebestpractices#readme)
+
+## Windows Background Service
+
+To run node.js as background service can follow steps here [`https://www.helpmegeek.com/run-nodejs-application-as-windows-service/`] (https://www.helpmegeek.com/run-nodejs-application-as-windows-service/). 
+If you are using nssm GUI:
+1. Path = _your node.exe path_
+2. Startup Directory = _your working directory path_
+2. Arguments = _your file to execute_
 
 ## Todo
 
 - `encrypt and decrypt for id`
-- `Refresh token and renew token`
-- `put method with any object and verify according to it?`
 - `s3`
 - `unit testing`
 - `passport`
+- `read & upload excel then delete it fs.unlinkSync inside temp`
 
 Feel free to contact me at chern-97@hotmail.com

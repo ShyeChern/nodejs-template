@@ -3,7 +3,7 @@ const saleGeneralModel = new GeneralModel('sales');
 const salesModel = require('./sale.model');
 const saleValidator = require('./sale.validator');
 const { fileStorage, attachmentFilter } = require('../../util/uploads');
-var multer = require('multer');
+const multer = require('multer');
 
 module.exports.getSale = async (req, res, next) => {
 	try {
@@ -44,13 +44,13 @@ module.exports.getSale = async (req, res, next) => {
 };
 
 module.exports.addSale = async (req, res, next) => {
-	var storage = fileStorage('attachment/');
-	var upload = multer({
+	const storage = fileStorage('attachment/');
+	const upload = multer({
 		storage: storage,
 		fileFilter: attachmentFilter,
 		limits: { fileSize: 5000000 },
 	});
-	var uploads = upload.fields([{ name: 'attachment', maxCount: 1 }]);
+	const uploads = upload.fields([{ name: 'attachment', maxCount: 1 }]);
 
 	uploads(req, res, async (err) => {
 		try {
@@ -82,13 +82,13 @@ module.exports.addSale = async (req, res, next) => {
 };
 
 module.exports.updateSale = async (req, res, next) => {
-	var storage = fileStorage('attachment/');
-	var upload = multer({
+	const storage = fileStorage('attachment/');
+	const upload = multer({
 		storage: storage,
 		fileFilter: attachmentFilter,
 		limits: { fileSize: 5000000 },
 	});
-	var uploads = upload.fields([{ name: 'attachment', maxCount: 1 }]);
+	const uploads = upload.fields([{ name: 'attachment', maxCount: 1 }]);
 
 	uploads(req, res, async (err) => {
 		try {

@@ -51,13 +51,13 @@ module.exports.add = async (req, res, next) => {
 	 * Store file in uploads/profile with image filter and 2mb file size inside uploads/profile
 	 * Can adjust the upload.fields array to add image field or image count
 	 */
-	var storage = fileStorage('profile/');
-	var upload = multer({
+	const storage = fileStorage('profile/');
+	const upload = multer({
 		storage: storage,
 		fileFilter: imageFilter,
 		limits: { fileSize: 2000000 },
 	});
-	var uploads = upload.fields([{ name: 'profileImage', maxCount: 1 }]);
+	const uploads = upload.fields([{ name: 'profileImage', maxCount: 1 }]);
 
 	uploads(req, res, async (err) => {
 		try {

@@ -1,11 +1,10 @@
 # CHANGELOG
-## v1.3.0 (2021-06-03)
+## v1.3.0 (2021-06-19)
 ### Feature
 * Add cookies feature
 ### Misc
 * Revise code
 
-# CHANGELOG
 ## v1.2.2 (2021-06-03)
 ### Misc
 * Add crlf to lf
