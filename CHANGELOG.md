@@ -1,4 +1,9 @@
 # CHANGELOG
+## v1.3.1 (2021-06-19)
+### Misc
+* Use path to locate email attachment
+* Add sample to serve html file in not found path
+
 ## v1.3.0 (2021-06-19)
 ### Feature
 * Add cookies feature

@@ -2,6 +2,8 @@
 
 This is the sample node.js file structure template for myself. It contains some code for me to refer when needed.
 
+[Changelog](CHANGELOG.md)
+
 ## Sample code including but not limited to the following package
 
 - Express

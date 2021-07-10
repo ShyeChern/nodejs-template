@@ -4,7 +4,7 @@
  *
  * Email sender can be set at constants.js
  */
-
+const path = require('path');
 const nodemailer = require('nodemailer');
 const { errorLog } = require('./log');
 
@@ -53,7 +53,7 @@ module.exports.sendWelcomeMail = async (receiver, data) => {
 	let attachment = [
 		{
 			filename: 'File_001.pdf',
-			path: `${ROOT_PATH}/assets/Sample_Attachment.pdf`,
+			path: path.join(ROOT_PATH, 'assets/Sample_Attachment.pdf'),
 		},
 	];
 
@@ -62,7 +62,7 @@ module.exports.sendWelcomeMail = async (receiver, data) => {
 
 const sendMail = async (subject, receiver, content, attachment = []) => {
 	// logo
-	attachment.push({ path: `${ROOT_PATH}/assets/logo.png`, cid: 'logo' });
+	attachment.push({ path: path.join(ROOT_PATH, 'assets/logo.png'), cid: 'logo' });
 
 	try {
 		const info = await transporter.sendMail({
@@ -74,7 +74,7 @@ const sendMail = async (subject, receiver, content, attachment = []) => {
 		});
 
 		// for debugging
-		// console.log(info)
+		console.log(info);
 
 		/* Sample return result
     {
