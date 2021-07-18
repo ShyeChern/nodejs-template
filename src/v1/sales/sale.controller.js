@@ -54,10 +54,10 @@ module.exports.addSale = async (req, res, next) => {
 
 	uploads(req, res, async (err) => {
 		try {
-			await saleValidator.validateAddSale(req.body);
 			if (err) {
 				throw new UserError(UserError.INVALID_ATTACHMENT);
 			}
+			await saleValidator.validateAddSale(req.body);
 
 			let attachment = null;
 			if (req.files.attachment) {

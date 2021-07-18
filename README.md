@@ -14,6 +14,7 @@ This is the sample node.js file structure template for myself. It contains some 
 - Nodemailer
 - Winstone
 - Node Cron
+- xlsx
 
 ## Installation
 
@@ -56,10 +57,8 @@ If you are using nssm GUI:
 
 ## Todo
 
-- `encrypt and decrypt for id`
 - `s3`
 - `unit testing`
-- `passport`
-- `read & upload excel then delete it fs.unlinkSync inside temp`
+- `promise with multiple await`
 
 Feel free to contact me at chern-97@hotmail.com

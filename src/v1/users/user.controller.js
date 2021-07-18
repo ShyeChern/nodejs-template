@@ -61,11 +61,11 @@ module.exports.add = async (req, res, next) => {
 
 	uploads(req, res, async (err) => {
 		try {
-			await userValidator.validateAddUser(req.body);
-
 			if (err) {
 				throw new UserError(UserError.INVALID_IMAGE);
 			}
+			await userValidator.validateAddUser(req.body);
+
 			let { email, username, password } = req.body;
 
 			let profileImage = null;

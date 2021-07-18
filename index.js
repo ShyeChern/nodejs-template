@@ -4,6 +4,7 @@ require('./config/constants');
 const express = require('express');
 const cors = require('cors');
 const https = require('https');
+const path = require('path');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const fs = require('fs');
@@ -16,6 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SIGNAGURE));
 app.use(cors({ origin: true, credentials: true }));
 app.use(helmet());
+// directly access for static file at -- http://localhost:5000/public/static_file.jpg
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 setRoutes(app);
 

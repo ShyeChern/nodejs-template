@@ -1,5 +1,6 @@
 const ErrorMessage = {
 	401: 'Unauthorized access',
+	403: 'Forbidden access',
 	500: 'Internal server error, please try again later. If this error persist please contact our support.',
 	100001: 'Invalid username or password.',
 	100002: 'Username must have at least 3 to 30 characters.',
@@ -18,6 +19,7 @@ const ErrorMessage = {
 	100013: 'Invalid sale id.',
 	100014: 'Invalid email address.',
 	100015: 'Email exist.',
+	100016: 'Invalid csv file.',
 };
 
 /**
@@ -42,6 +44,7 @@ class UserError extends Error {
 }
 
 UserError.UNAUTHORIZED = 401;
+UserError.FORBIDDEN = 403;
 UserError.INVALID_CREDENTIALS = 100001;
 UserError.INVALID_USERNAME = 100002;
 UserError.INVALID_PASSWORD = 100003;
@@ -57,6 +60,7 @@ UserError.INVALID_ATTACHMENT = 100012;
 UserError.INVALID_SALE_ID = 100013;
 UserError.INVALID_EMAIL = 100014;
 UserError.EMAIL_USED = 100015;
+UserError.INVALID_CSV = 100016;
 
 global.UserError = module.exports = UserError;
 global.ErrorMessage = module.exports = ErrorMessage;

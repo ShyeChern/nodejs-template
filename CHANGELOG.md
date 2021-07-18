@@ -1,5 +1,11 @@
 # CHANGELOG
-## v1.3.1 (2021-06-19)
+## v1.4.0 (2021-07-18)
+### Feature
+* Add public route to serve static file
+* Add upload, read, write excel feature
+* Add role checking in middleware
+
+## v1.3.1 (2021-07-07)
 ### Misc
 * Use path to locate email attachment
 * Add sample to serve html file in not found path

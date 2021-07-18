@@ -35,3 +35,17 @@ module.exports.attachmentFilter = (req, file, cb) => {
 		cb(null, true);
 	}
 };
+
+module.exports.csvFilter = (req, file, cb) => {
+	const allowedMimes = [
+		'text/csv',
+		'application/vnd.ms-excel',
+		'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+	];
+	
+	if (!allowedMimes.includes(file.mimetype)) {
+		cb(new Error());
+	} else {
+		cb(null, true);
+	}
+};

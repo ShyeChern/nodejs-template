@@ -1,34 +1,37 @@
 const express = require('express');
 const router = express.Router();
-const { verifyToken } = require('../middleware/verifyToken');
+const { verifyAccess } = require('../middleware/middleware');
 const userController = require('./users/user.controller');
 const salesController = require('./sales/sale.controller');
 const uploadController = require('./uploads/upload.controller');
 
 /**
  * Defined route for every function with middleware
+ * start with --> /api/v1
  */
-// try see if can group together
+
 // User route
 router.route('/users/login').post(userController.login);
 
 router.route('/users').post(userController.add);
 
-router.route('/users/:userId/sales').get(verifyToken, userController.getUserSale);
+router.route('/users/:userId/sales').get(verifyAccess([1, 2]), userController.getUserSale);
 
 // Sales route
 router
 	.route('/sales')
-	.get(verifyToken, salesController.getSale)
-	.post(verifyToken, salesController.addSale);
+	.get(verifyAccess([1, 2]), salesController.getSale)
+	.post(verifyAccess([1, 2]), salesController.addSale);
 router
 	.route('/sales/:id')
-	.put(verifyToken, salesController.updateSale)
-	.delete(verifyToken, salesController.deleteSale);
+	.put(verifyAccess([1, 2]), salesController.updateSale)
+	.delete(verifyAccess([1, 2]), salesController.deleteSale);
 
 // Uploads route -- No authorization header
 router.route('/view/:folder/:file').get(uploadController.viewFile);
 router.route('/download/:folder/:file').get(uploadController.downloadFile);
+router.route('/uploads/read-excel').post(uploadController.readExcel);
+router.route('/uploads/write-excel').get(uploadController.writeExcel);
 
 /**
  * Cookie Sample -- must be under same domain
