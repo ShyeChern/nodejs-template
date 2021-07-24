@@ -23,7 +23,7 @@ const ErrorMessage = {
 };
 
 /**
- * Custom User error
+ * Custom User Error
  */
 class UserError extends Error {
 	/**
@@ -62,5 +62,7 @@ UserError.INVALID_EMAIL = 100014;
 UserError.EMAIL_USED = 100015;
 UserError.INVALID_CSV = 100016;
 
-global.UserError = module.exports = UserError;
-global.ErrorMessage = module.exports = ErrorMessage;
+module.exports = {
+	UserError,
+	ErrorMessage,
+};

@@ -6,6 +6,8 @@ const { signToken } = require('../../util/jwt');
 const { encrypt, decrypt } = require('../../util/password');
 const { fileStorage, imageFilter } = require('../../util/uploads');
 const { sendWelcomeMail } = require('../../util/email');
+const constants = require('../../util/constants');
+const { UserError } = require('../../util/error');
 const multer = require('multer');
 
 module.exports.login = async (req, res, next) => {
@@ -33,14 +35,13 @@ module.exports.login = async (req, res, next) => {
 
 		user.token = signToken({ userId: user.id });
 
-		res
-			.cookie(APP_COOKIE, 'someValue', {
-				maxAge: 10000, // 10 seconds
-				httpOnly: true,
-				secure: true,
-				signed: true,
-			})
-			.send({ message: 'Login successfully', data: user });
+		res.cookie(constants.APP_COOKIE, 'someValue', {
+			maxAge: 10000, // 10 seconds
+			httpOnly: true,
+			secure: true,
+			signed: true,
+		});
+		res.send({ message: 'Login successfully', data: user });
 	} catch (err) {
 		return next(err);
 	}
@@ -106,7 +107,7 @@ module.exports.getUserSale = async (req, res, next) => {
 
 		for (let value of row) {
 			if (value.attachment !== null) {
-				value.attachment = `${API_V1_VIEW}${value.attachment}`;
+				value.attachment = `${constants.API_V1_VIEW}${value.attachment}`;
 			}
 		}
 

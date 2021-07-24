@@ -14,7 +14,8 @@ This is the sample node.js file structure template for myself. It contains some 
 - Nodemailer
 - Winstone
 - Node Cron
-- xlsx
+- Xlsx
+- Jest
 
 ## Installation
 
@@ -58,7 +59,6 @@ If you are using nssm GUI:
 ## Todo
 
 - `s3`
-- `unit testing`
 - `promise with multiple await`
 
 Feel free to contact me at chern-97@hotmail.com

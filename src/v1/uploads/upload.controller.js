@@ -2,6 +2,7 @@ const fs = require('fs');
 const { PassThrough } = require('stream');
 const XLSX = require('xlsx');
 const multer = require('multer');
+const { UserError } = require('../../util/error');
 const { fileStorage, csvFilter } = require('../../util/uploads');
 
 module.exports.viewFile = async (req, res, next) => {

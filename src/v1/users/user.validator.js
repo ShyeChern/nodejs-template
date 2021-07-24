@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const GeneralModel = require('../../util/generalModel');
 const userGeneralModel = new GeneralModel('users');
+const { UserError } = require('../../util/error');
 
 const email = Joi.string()
 	.email()

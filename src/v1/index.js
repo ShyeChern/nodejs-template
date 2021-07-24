@@ -4,6 +4,7 @@ const { verifyAccess } = require('../middleware/middleware');
 const userController = require('./users/user.controller');
 const salesController = require('./sales/sale.controller');
 const uploadController = require('./uploads/upload.controller');
+const constants = require('../util/constants');
 
 /**
  * Defined route for every function with middleware
@@ -39,8 +40,8 @@ router.route('/uploads/write-excel').get(uploadController.writeExcel);
  * maxAge in milliseconds
  */
 router.route('/test-cookie').get((req, res) => {
-	console.log(req.signedCookies[APP_COOKIE]);
-	res.cookie(APP_COOKIE, 'value', {
+	console.log(req.signedCookies[constants.APP_COOKIE]);
+	res.cookie(constants.APP_COOKIE, 'value', {
 		maxAge: 60000,
 		httpOnly: true,
 		secure: true,

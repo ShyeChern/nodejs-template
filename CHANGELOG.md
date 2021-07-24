@@ -1,4 +1,11 @@
 # CHANGELOG
+
+## v1.5.0 (2021-07-24)
+### Feature
+* Add sample unit test
+### Misc
+* Change global variables to import style
+
 ## v1.4.0 (2021-07-18)
 ### Feature
 * Add public route to serve static file

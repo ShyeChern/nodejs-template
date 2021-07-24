@@ -2,6 +2,7 @@ const Joi = require('joi').extend(require('@joi/date'));
 const GeneralModel = require('../../util/generalModel');
 const saleGeneralModel = new GeneralModel('sales');
 const userGeneralModel = new GeneralModel('users');
+const { UserError } = require('../../util/error');
 
 const id = Joi.number()
 	.integer()

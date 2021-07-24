@@ -1,6 +1,4 @@
 require('dotenv').config();
-require('./src/util/error');
-require('./config/constants');
 const express = require('express');
 const cors = require('cors');
 const https = require('https');

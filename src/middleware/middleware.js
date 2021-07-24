@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { infoLog } = require('../util/log');
-
+const { UserError } = require('../util/error');
 /**
  * Middleware that receive roles that able to access the route
  * @param {array} role array of role level in integer

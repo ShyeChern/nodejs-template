@@ -2,10 +2,10 @@
  * Email function with nodemailer
  * Consist of all the email with html template
  *
- * Email sender can be set at constants.js
  */
 const path = require('path');
 const nodemailer = require('nodemailer');
+const constants = require('../util/constants');
 const { errorLog } = require('./log');
 
 const transporter = nodemailer.createTransport({
@@ -44,7 +44,7 @@ module.exports.sendWelcomeMail = async (receiver, data) => {
     </p>
     <p style="padding: 10px 20px; text-align: left;">
       Best Regards,<br />
-      ${EMAIL_SENDER}
+      ${constants.EMAIL_SENDER}
     </p>
   </div>
 </div>`;
@@ -53,7 +53,7 @@ module.exports.sendWelcomeMail = async (receiver, data) => {
 	let attachment = [
 		{
 			filename: 'File_001.pdf',
-			path: path.join(ROOT_PATH, 'assets/Sample_Attachment.pdf'),
+			path: path.join(constants.ROOT_PATH, 'assets/Sample_Attachment.pdf'),
 		},
 	];
 
@@ -62,7 +62,7 @@ module.exports.sendWelcomeMail = async (receiver, data) => {
 
 const sendMail = async (subject, receiver, content, attachment = []) => {
 	// logo
-	attachment.push({ path: path.join(ROOT_PATH, 'assets/logo.png'), cid: 'logo' });
+	attachment.push({ path: path.join(constants.ROOT_PATH, 'assets/logo.png'), cid: 'logo' });
 
 	try {
 		const info = await transporter.sendMail({

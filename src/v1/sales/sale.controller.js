@@ -3,6 +3,8 @@ const saleGeneralModel = new GeneralModel('sales');
 const salesModel = require('./sale.model');
 const saleValidator = require('./sale.validator');
 const { fileStorage, attachmentFilter } = require('../../util/uploads');
+const constants = require('../../util/constants');
+const { UserError } = require('../../util/error');
 const multer = require('multer');
 
 module.exports.getSale = async (req, res, next) => {
@@ -32,7 +34,7 @@ module.exports.getSale = async (req, res, next) => {
 
 		for (let value of row) {
 			if (value.attachment !== null) {
-				value.attachment = `${API_V1_VIEW}${value.attachment}`;
+				value.attachment = `${constants.API_V1_VIEW}${value.attachment}`;
 			}
 		}
 

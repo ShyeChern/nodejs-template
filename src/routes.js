@@ -1,6 +1,7 @@
 const path = require('path');
 const apiV1 = require('./v1/index');
 // const apiV2 = require('./v2/index');
+const { UserError, ErrorMessage } = require('./util/error');
 const { errorLog } = require('./util/log');
 
 module.exports.setRoutes = (app) => {
