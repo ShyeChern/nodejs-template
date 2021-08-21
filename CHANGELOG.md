@@ -2,7 +2,6 @@
 
 ## v1.5.1 (2021-08-21)
 ### Feature
-* Add sample unit test
 * Add another email sample design
 ### Fix
 * Fix wrong root path in constant variable
