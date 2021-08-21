@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const GeneralModel = require('../../util/generalModel');
+const GeneralModel = require('../../models/generalModel');
 const userGeneralModel = new GeneralModel('users');
 const { UserError } = require('../../util/error');
 

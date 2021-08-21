@@ -1,7 +1,6 @@
 const path = require('path');
-const baseUrl = 'http://localhost:5000/';
-const rootPath = path.join(__dirname, '../');
-
+const baseUrl = `${process.env.URL}:${process.env.PORT}/`;
+const rootPath = path.join(__dirname, '../../');
 module.exports = {
 	BASE_URL: baseUrl,
 	API_V1_VIEW: `${baseUrl}api/v1/view/`,

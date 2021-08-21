@@ -39,7 +39,7 @@ describe('Sale Controller', function () {
 			 * After insert cannot get res.send returned result, but can be console.log in function
 			 */
 			const mockInsert = jest.fn().mockResolvedValue(1);
-			jest.mock('../src/util/generalModel', () => {
+			jest.mock('../src/models/generalModel', () => {
 				return jest.fn().mockImplementation(() => {
 					return {
 						insert: mockInsert,

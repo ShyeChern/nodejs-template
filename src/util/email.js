@@ -22,7 +22,8 @@ const transporter = nodemailer.createTransport({
 });
 
 module.exports.sendWelcomeMail = async (receiver, data) => {
-	let design = `
+	// Another design sample at bottom
+	const design = `
   <div
   style="max-width: 560px; padding: 20px; border-radius: 5px; margin: auto; font-size: 15px;background: #414242; font-family: Open Sans,Helvetica,Arial; ">
   <div style="text-align: center;">
@@ -93,3 +94,26 @@ const sendMail = async (subject, receiver, content, attachment = []) => {
 		errorLog(err);
 	}
 };
+
+/**
+ * Another email design sample
+ * 
+ * <div style="background-color:#005DAA; color: white; width:700px; padding:20px; text-align:center">
+  <img src="https://via.placeholder.com/100/fff/000?text=Logo" alt="logo" />
+  <h3 style="font-size: 45px; margin: 0">Your Title</h3>
+  <hr style="border: 1px solid white">
+  <p style="font-size: 24px;">Some other description.</p>
+  <div style="background-color:#004882; width: 90% ; margin: auto">
+    <div style="font-size: 22px; text-align: justify; padding: 5px 20px;">
+      <p>Phasellus eleifend condimentum felis, id sodales ipsum. Sed vitae enim at lacus eleifend suscipit. Duis
+        facilisis massa ut tellus viverra facilisis. Integer tempor velit felis, et ornare nunc placerat at. Sed velit
+        nibh, malesuada vel orci ultrices, pulvinar ultricies libero. Cras eu lacus lorem. Vestibulum tempus condimentum
+        finibus.</p>
+      <p>Paragraph 2...</p>
+      <p>If you have any questions, please do not hesitate to contact us at 1234567890</p>
+    </div>
+  </div>
+  <p style="font-size: 22px;">Sincerely,<br /><b>ADT Services (M) Sdn Bhd</b></p>
+  <hr style="border: 1px solid white;">
+</div>
+ */

@@ -1,4 +1,4 @@
-const GeneralModel = require('../../util/generalModel');
+const GeneralModel = require('../../models/generalModel');
 const saleGeneralModel = new GeneralModel('sales');
 const salesModel = require('./sale.model');
 const saleValidator = require('./sale.validator');

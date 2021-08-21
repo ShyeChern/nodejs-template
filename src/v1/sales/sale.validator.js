@@ -1,5 +1,5 @@
 const Joi = require('joi').extend(require('@joi/date'));
-const GeneralModel = require('../../util/generalModel');
+const GeneralModel = require('../../models/generalModel');
 const saleGeneralModel = new GeneralModel('sales');
 const userGeneralModel = new GeneralModel('users');
 const { UserError } = require('../../util/error');
