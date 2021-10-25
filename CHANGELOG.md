@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.5.2 (2021-10-25)
+### Misc
+* Add Promise.all for multiple await
+
 ## v1.5.1 (2021-08-21)
 ### Feature
 * Add sample unit test

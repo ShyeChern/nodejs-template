@@ -33,7 +33,7 @@ if (process.env.NODE_ENV !== 'production') {
 		transports: [
 			/**
 			 * Write all logs with level `error` to `error.log`
-			 * Write all logs with level `info` to `info.log`
+			 * Write all logs with level `info` and below to `info.log`
 			 * Write all logs to `combined.log`
 			 */
 			new transports.File({ filename: './log/error.log', level: 'error' }),

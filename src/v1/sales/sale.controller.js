@@ -21,7 +21,7 @@ module.exports.getSale = async (req, res, next) => {
 			condition.package_name = packageName;
 		}
 
-		let row = await saleGeneralModel.selectLimitOffset(condition, limit, offset, [
+		let row = saleGeneralModel.selectLimitOffset(condition, limit, offset, [
 			'id',
 			'user_id as userId',
 			'package_name as packageName',
@@ -29,8 +29,14 @@ module.exports.getSale = async (req, res, next) => {
 			'sale_date as saleDate',
 			'attachment',
 		]);
+
 		// count id as total
-		let totalRow = (await saleGeneralModel.count(condition, { total: 'id' })).total;
+		let totalRow = saleGeneralModel.count(condition, { total: 'id' });
+
+		// await all at once
+		[row, totalRow] = await Promise.all([row, totalRow]);
+		
+		totalRow = totalRow.total;
 
 		for (let value of row) {
 			if (value.attachment !== null) {

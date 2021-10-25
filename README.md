@@ -59,6 +59,5 @@ If you are using nssm GUI:
 ## Todo
 
 - `s3`
-- `promise with multiple await`
 
 Feel free to contact me at chern-97@hotmail.com
