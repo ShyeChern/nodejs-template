@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.5.3 (2021-12-08)
+### Misc
+* Add compression middleware
+
 ## v1.5.2 (2021-10-25)
 ### Misc
 * Add Promise.all for multiple await

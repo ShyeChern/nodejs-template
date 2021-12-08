@@ -5,6 +5,7 @@ const https = require('https');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
+const compression = require('compression');
 const fs = require('fs');
 const { setRoutes } = require('./src/routes');
 const { cronJob } = require('./src/cron/index');
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SIGNAGURE));
 app.use(cors({ origin: true, credentials: true }));
 app.use(helmet());
+app.use(compression());
 // directly access for static file at -- http://localhost:5000/public/static_file.jpg
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
