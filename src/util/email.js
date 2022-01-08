@@ -54,7 +54,7 @@ module.exports.sendWelcomeMail = async (receiver, data) => {
 	let attachment = [
 		{
 			filename: 'File_001.pdf',
-			path: path.join(constants.ROOT_PATH, 'assets/Sample_Attachment.pdf'),
+			path: path.resolve('assets/Sample_Attachment.pdf'),
 		},
 	];
 
@@ -63,7 +63,7 @@ module.exports.sendWelcomeMail = async (receiver, data) => {
 
 const sendMail = async (subject, receiver, content, attachment = []) => {
 	// logo
-	attachment.push({ path: path.join(constants.ROOT_PATH, 'assets/logo.png'), cid: 'logo' });
+	attachment.push({ path: path.resolve('assets/logo.png'), cid: 'logo' });
 
 	try {
 		const info = await transporter.sendMail({

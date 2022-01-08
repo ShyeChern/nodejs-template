@@ -23,7 +23,7 @@ module.exports.setRoutes = (app) => {
 	app.use('/*', (req, res) => {
 		/**
 		 * Can use redirect to redirect somewhere -- res.redirect('http://localhost:3000/')
-		 * Can serve html file -- res.sendFile(path.join(__dirname, '../views/404.html'));
+		 * Can serve html file -- res.sendFile(path.resolve('views/404.html'));
 		 */
 		res.status(404).send(`${req.method} ${req.originalUrl} endpoint not found`);
 	});

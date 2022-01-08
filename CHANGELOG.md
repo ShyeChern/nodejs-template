@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v1.6.0 (2022-01-08)
+### Feature
+* Add reusable searching and sorting
+### Misc
+* Revise .env configuration
+* Change path.join to path.resolve (start from absolute path)
+* Added multiple port setting
+
+
 ## v1.5.3 (2021-12-08)
 ### Misc
 * Add compression middleware
