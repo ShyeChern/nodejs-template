@@ -10,6 +10,7 @@ This is the sample node.js file structure template for myself. It contains some 
 - Joi
 - Jsonwebtoken
 - Knex
+- Sequelize
 - Multer
 - Nodemailer
 - Winstone
@@ -22,9 +23,11 @@ This is the sample node.js file structure template for myself. It contains some 
 1. Clone this repo
 2. Run **npm install**
 3. Change your .env variable
-4. Setup Database by running **npx knex migrate:latest** (Windows), **knex migrate:latest** (Mac)
-5. Run **npx knex seed:run** (Windows), **knex seed:run** (Mac)
-6. Run **nodemon index.js**
+4. Setup Database by running **npx knex migrate:latest** 
+5. Run **npx knex seed:run**
+6. Setup Database by running **npx sequelize-cli db:migrate** 
+7. Run **npx sequelize-cli db:seed:all**
+8. Run **nodemon index.js**
 
 **_Note_** \
 Auto increment/Sequences no update if seeding, need to manually update it (tested in postgres)

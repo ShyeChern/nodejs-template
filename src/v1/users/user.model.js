@@ -1,4 +1,4 @@
-const knex = require('../../../database/database');
+const knex = require('../../../database/knex/database');
 
 module.exports.joinSales = (condition) => {
 	return knex('users as u')

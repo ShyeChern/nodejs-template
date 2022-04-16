@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.7.0 (2022-04-16)
+### Feature
+* Add sample usecase of sequelize in v2 api
+
 ## v1.6.0 (2022-01-08)
 ### Feature
 * Add reusable searching and sorting

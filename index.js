@@ -3,6 +3,7 @@ const path = require('path');
 require('dotenv').config({
 	path: path.resolve(`.env${process.env.NODE_ENV ? `.${process.env.NODE_ENV}` : ''}`),
 });
+require('./database/sequelize/database').init();
 const express = require('express');
 const cors = require('cors');
 const https = require('https');

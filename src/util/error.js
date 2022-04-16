@@ -20,6 +20,8 @@ const ErrorMessage = {
 	100014: 'Invalid email address.',
 	100015: 'Email exist.',
 	100016: 'Invalid csv file.',
+	100017: 'Invalid product id',
+	100018: 'Invalid quotation id',
 };
 
 /**
@@ -61,6 +63,8 @@ UserError.INVALID_SALE_ID = 100013;
 UserError.INVALID_EMAIL = 100014;
 UserError.EMAIL_USED = 100015;
 UserError.INVALID_CSV = 100016;
+UserError.INVALID_PRODUCT_ID = 100017;
+UserError.INVALID_QUOTATION_ID = 100018;
 
 module.exports = {
 	UserError,

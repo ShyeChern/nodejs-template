@@ -11,10 +11,10 @@ module.exports = {
 			database: 'sales_app',
 		},
 		migrations: {
-			directory: './database/migrations',
+			directory: './database/knex/migrations',
 		},
 		seeds: {
-			directory: './database/seeds',
+			directory: './database/knex/seeds',
 		},
 	},
 
@@ -27,10 +27,10 @@ module.exports = {
 			database: 'sales_app',
 		},
 		migrations: {
-			directory: './database/migrations',
+			directory: './database/knex/migrations',
 		},
 		seeds: {
-			directory: './database/seeds',
+			directory: './database/knex/seeds',
 		},
 	},
 
@@ -43,10 +43,10 @@ module.exports = {
 			database: 'sales_app',
 		},
 		migrations: {
-			directory: './database/migrations',
+			directory: './database/knex/migrations',
 		},
 		seeds: {
-			directory: './database/seeds',
+			directory: './database/knex/seeds',
 		},
 	},
 };

@@ -1,12 +1,13 @@
 const path = require('path');
 const apiV1 = require('./v1/index');
-// const apiV2 = require('./v2/index');
+const apiV2 = require('./v2/index');
 const { UserError, ErrorMessage } = require('./util/error');
 const { errorLog } = require('./util/log');
 
 module.exports.setRoutes = (app) => {
 	// api route, all the api will start with /api/v1/xx
 	app.use('/api/v1', apiV1);
+	app.use('/api/v2', apiV2);
 
 	// error middleware must have four parameter
 	app.use((err, req, res, next) => {
