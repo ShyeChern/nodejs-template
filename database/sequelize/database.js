@@ -1,13 +1,8 @@
 const { Sequelize } = require('sequelize');
 const environment = process.env.NODE_ENV || 'development';
-const config = require('../../sequelizefile')[environment];
+const { database, user, password, ...config } = require('../../sequelizefile')[environment];
 
-const conn = new Sequelize(
-	'sales_app',
-	process.env.DB_USER || 'postgres',
-	process.env.DB_PASS || 'admin',
-	config
-);
+const conn = new Sequelize(database, user, password, config);
 
 module.exports.init = async () => {
 	try {
