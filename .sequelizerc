@@ -1,5 +1,7 @@
 const path = require('path');
-
+require('dotenv').config({
+	path: path.resolve(`.env${process.env.NODE_ENV ? `.${process.env.NODE_ENV}` : ''}`),
+});
 module.exports = {
 	config: path.resolve('sequelizefile.js'),
 	'migrations-path': path.resolve('database', 'sequelize', 'migrations'),
