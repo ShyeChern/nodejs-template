@@ -34,6 +34,7 @@ router.route('/view/:folder/:file').get(uploadController.viewFile);
 router.route('/download/:folder/:file').get(uploadController.downloadFile);
 router.route('/uploads/read-excel').post(uploadController.readExcel);
 router.route('/uploads/write-excel').get(uploadController.writeExcel);
+router.route('/uploads/style-excel').get(uploadController.styleExcel);
 
 /**
  * Cookie Sample -- must be under same domain

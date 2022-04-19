@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.8.0 (2022-04-19)
+### Feature
+* Added exceljs package for excel styling
+
 ## v1.7.0 (2022-04-16)
 ### Feature
 * Add sample usecase of sequelize in v2 api
