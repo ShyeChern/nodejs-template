@@ -1,6 +1,6 @@
 {
 	"name": "nodejs-template",
-	"version": "1.6.0",
+	"version": "1.8.0",
 	"description": "Nodejs file structure and template",
 	"main": "index.js",
 	"scripts": {
