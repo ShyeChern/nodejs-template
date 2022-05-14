@@ -9,6 +9,7 @@
 		"prod": "set NODE_ENV=production&&nodemon index.js",
 		"migrate": "set NODE_ENV=%npm_config_env%&&npx sequelize-cli db:migrate",
 		"seed": "set NODE_ENV=%npm_config_env%&&npx sequelize-cli db:seed:all",
+		"show-args": "echo %npm_config_username% %npm_config_password%",
 		"test": "npx jest"
 	},
 	"author": "Shye Chern",

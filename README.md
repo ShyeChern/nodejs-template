@@ -1,4 +1,6 @@
 # Node.js Template
+![npm version](https://img.shields.io/badge/npm-v8.7-brightgreen)
+![node version](https://img.shields.io/badge/node-v16.14.2-brightgreen)
 
 This is the sample node.js file structure template for myself. It contains some code for me to refer when needed.
 
@@ -59,8 +61,10 @@ If you are using nssm GUI:
 2. Startup Directory = _your working directory path_
 2. Arguments = _your file to execute_
 
-## Todo
+## Npm Flag
 
-- `s3`
+Sample to add arguments in command line at runtime
+> npm run show-args --username=weq --password=23 --
+
 
 Feel free to contact me at chern-97@hotmail.com

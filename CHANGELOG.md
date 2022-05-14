@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.8.1 (2022-05-14)
+### Misc
+* Added sample to run npm script with arguments in package.json
+
 ## v1.8.0 (2022-04-19)
 ### Feature
 * Added exceljs package for excel styling
