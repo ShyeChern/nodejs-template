@@ -2,8 +2,8 @@ module.exports = {
 	development: {
 		username: process.env.DB_USER || 'postgres',
 		password: process.env.DB_PASS || 'admin',
-		database: 'sales_app',
-		host: 'localhost',
+		database: process.env.DB_NAME || 'sales_app',
+		host: process.env.DB_HOST || 'localhost',
 		dialect: 'postgres',
 		seederStorage: 'sequelize',
 		logging: false,
@@ -11,8 +11,8 @@ module.exports = {
 	staging: {
 		username: process.env.DB_USER || 'postgres',
 		password: process.env.DB_PASS || 'admin',
-		database: 'sales_app',
-		host: 'localhost',
+		database: process.env.DB_NAME || 'sales_app',
+		host: process.env.DB_HOST || 'localhost',
 		dialect: 'postgres',
 		seederStorage: 'sequelize',
 		logging: false,
@@ -20,8 +20,8 @@ module.exports = {
 	production: {
 		username: process.env.DB_USER || 'postgres',
 		password: process.env.DB_PASS || 'admin',
-		database: 'sales_app',
-		host: 'localhost',
+		database: process.env.DB_NAME || 'sales_app',
+		host: process.env.DB_HOST || 'localhost',
 		dialect: 'postgres',
 		seederStorage: 'sequelize',
 		logging: false,

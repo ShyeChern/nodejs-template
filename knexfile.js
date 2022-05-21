@@ -5,10 +5,10 @@ module.exports = {
 	development: {
 		client: 'pg',
 		connection: {
-			host: 'localhost',
+			host: process.env.DB_HOST || 'localhost',
 			user: process.env.DB_USER || 'postgres',
 			password: process.env.DB_PASS || 'admin',
-			database: 'sales_app',
+			database: process.env.DB_NAME || 'sales_app',
 		},
 		migrations: {
 			directory: './database/knex/migrations',
@@ -21,10 +21,10 @@ module.exports = {
 	staging: {
 		client: 'pg',
 		connection: {
-			host: 'localhost',
+			host: process.env.DB_HOST || 'localhost',
 			user: process.env.DB_USER || 'postgres',
 			password: process.env.DB_PASS || 'admin',
-			database: 'sales_app',
+			database: process.env.DB_NAME || 'sales_app',
 		},
 		migrations: {
 			directory: './database/knex/migrations',
@@ -37,10 +37,10 @@ module.exports = {
 	production: {
 		client: 'pg',
 		connection: {
-			host: 'localhost',
+			host: process.env.DB_HOST || 'localhost',
 			user: process.env.DB_USER || 'postgres',
 			password: process.env.DB_PASS || 'admin',
-			database: 'sales_app',
+			database: process.env.DB_NAME || 'sales_app',
 		},
 		migrations: {
 			directory: './database/knex/migrations',

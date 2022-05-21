@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.8.2 (2022-05-21)
+### Misc
+* Added docker compose example
+
 ## v1.8.1 (2022-05-14)
 ### Misc
 * Added sample to run npm script with arguments in package.json

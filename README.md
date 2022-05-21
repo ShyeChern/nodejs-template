@@ -66,5 +66,9 @@ If you are using nssm GUI:
 Sample to add arguments in command line at runtime
 > npm run show-args --username=weq --password=23 --
 
+## Running in Docker
+1. Create a file named docker-compose.yml and by following the format in docker-compose.yml.example
+2. Run **docker-compose --env-file .env.production up** (Specify your .env file)
+
 
 Feel free to contact me at chern-97@hotmail.com
