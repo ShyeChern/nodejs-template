@@ -10,8 +10,8 @@ services:
     restart: always
     command: bash -c 'npm install --production && npm start'
     volumes:
-      - ./:/app
-      - /app/node_modules # avoid copy to node_modules from local
+      - ./:/app # copy all from host current dir to container /app 
+      - /app/node_modules # create new /app/node_modules in container (avoid copy node_modules from host)
 
   postgresql:
     image: postgres:13
