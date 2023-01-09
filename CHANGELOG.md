@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.8.3 (2023-01-09)
+### Misc
+* Change routes import method
+
 ## v1.8.2 (2022-05-21)
 ### Misc
 * Added docker compose example

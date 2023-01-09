@@ -11,7 +11,6 @@ const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const compression = require('compression');
 const fs = require('fs');
-const { setRoutes } = require('./src/routes');
 const { cronJob } = require('./src/cron/index');
 const PORTs = JSON.parse(process.env.PORTs ?? '[5000, 5001, 5002]');
 const app = express();
@@ -23,8 +22,7 @@ app.use(helmet());
 app.use(compression());
 // directly access for static file at -- http://localhost:5000/public/static_file.jpg
 app.use('/public', express.static(path.resolve('public')));
-
-setRoutes(app);
+app.use(require('./src/routes'));
 if (process.env.NODE_ENV === 'production') {
 	const options = {
 		key: fs.readFileSync(process.env.SSL_KEY),
