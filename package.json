@@ -1,6 +1,6 @@
 {
 	"name": "nodejs-template",
-	"version": "1.8.3",
+	"version": "1.8.4",
 	"description": "Nodejs file structure and template",
 	"main": "index.js",
 	"scripts": {
@@ -49,5 +49,8 @@
 	"bugs": {
 		"url": "https://github.com/ShyeChern/nodejs-template/issues"
 	},
-	"homepage": "https://github.com/ShyeChern/nodejs-template#readme"
+	"homepage": "https://github.com/ShyeChern/nodejs-template#readme",
+	"imports": {
+		"#*": "./src/*"
+	}
 }

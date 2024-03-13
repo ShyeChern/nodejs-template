@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.8.4 (2024-03-13)
+### Misc
+* Added sample for absolute import
+
 ## v1.8.3 (2023-01-09)
 ### Misc
 * Change routes import method
