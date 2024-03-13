@@ -51,6 +51,8 @@
 	},
 	"homepage": "https://github.com/ShyeChern/nodejs-template#readme",
 	"imports": {
-		"#*": "./src/*"
+		"#*": "./src/*",
+		"#file-extension/*": "./path/to/file/*.js",
+		"#fixed-file": "./path/to/file.js"
 	}
 }
